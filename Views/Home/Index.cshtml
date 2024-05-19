@@ -1,8 +1,93 @@
 ﻿@{
-      Layout = null;
+	Layout = null;
+	List<Pizza> pizze = new List<Pizza>();
+	pizze.Add(new Pizza("Margherita", "Pomodoro, mozzarella, basilico", "https://media.istockphoto.com/id/1414575281/it/foto/una-deliziosa-e-gustosa-pizza-italiana-margherita-con-pomodori-e-mozzarella-di-bufala.jpg?s=2048x2048&w=is&k=20&c=ZMElJhh1E44g5NpXCKPnSkDPyoUAGAy_DDdO7eECBLU=", 5.99m));
+	pizze.Add(new Pizza("Diavola", "Pomodoro, mozzarella, salame piccante", "https://images.pexels.com/photos/20154168/pexels-photo-20154168/free-photo-of-pizza-pasto-fresco-scatola.jpeg", 7.99m));
+	pizze.Add(new Pizza("Quattro Stagioni", "Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive", "https://images.pexels.com/photos/20117304/pexels-photo-20117304/free-photo-of-cibo-legno-pizza-ristorante.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 8.99m));
+	pizze.Add(new Pizza("Capricciosa", "Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive, uova", "https://images.pexels.com/photos/20154168/pexels-photo-20154168/free-photo-of-pizza-pasto-fresco-scatola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 9.49m));
+	pizze.Add(new Pizza("Quattro Formaggi", "Pomodoro, mozzarella, gorgonzola, fontina, parmigiano", "https://images.pexels.com/photos/20154168/pexels-photo-20154168/free-photo-of-pizza-pasto-fresco-scatola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 9.99m));
+	pizze.Add(new Pizza("Quattro Formaggi", "Pomodoro, mozzarella, gorgonzola, fontina, parmigiano", "https://images.pexels.com/photos/20154168/pexels-photo-20154168/free-photo-of-pizza-pasto-fresco-scatola.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 9.99m));
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewData["Title"]</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg">
+		<div class="container-fluid">
+			<h1 class="text-center p-5">Pizzeria da <b>Chris!</b></h1>
+			<p class="text-center p-3">Ecco a voi le nostre splendide pizze!</p>
+			<div class="container">
+				<div class="row">
+					@foreach (var pizza in pizze)
+					{
+						<div class="col-5 col-lg-4 mb-4">
+							<div class="card">
+								<div class="pizze">
+									<img src="@pizza.PhotoUrl" alt="@pizza.Name">
+									<div class="card-body">
+										<h5 class="card-title">@pizza.Name</h5>
+										<p class="card-text">@pizza.Description</p>
+										<p class="card-text">Prezzo: €@pizza.Price</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+
+		</div>
+</body>
+
+</html>
+
+
+
+
+
+<style>
+	.green {
+		background: green;
+	}
+
+	.card {
+		height: 400px;
+		transition: transform 0.3s ease-out;
+		border-radius: 50px;
+		overflow: auto;
+	}
+
+		.card:hover {
+			transform: scale(1.1);
+		}
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 150px;
+	}
+
+	.bg {
+		width: 100%;
+		height: 100%;
+		--color1: rgb(108, 231, 221);
+		--color2: rgb(250, 255, 178);
+		background-color: var(--color1);
+		background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)), linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));
+		background-size: 60px 60px;
+		background-position: 0 0, 30px 30px;
+	}
+</style>
+
+
